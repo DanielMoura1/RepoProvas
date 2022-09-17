@@ -16,7 +16,7 @@ export async function createUsuario(req: Request, res: Response) {
   try{
       await usuarioService.varificarEmail(usuario)
       await usuarioService.criarUsuario(usuario);
-      res.status(200).send('Usuario criado com sucesso!!');
+      res.status(201).send('Usuario criado com sucesso!!');
   }catch(error){
       res.status(500).send(error)
   }
@@ -28,8 +28,9 @@ export async function loginUsuario(req: Request, res: Response) {
   try{
     await usuarioService.varificarLogin(usuario)
     const nossoToken = await usuarioService.criarToken(usuario)
-    await usuarioService.updateUsuario(usuario,nossoToken)
-      res.send(nossoToken);
+    await usuarioService.updateUsuario(usuario,nossoToken.token)
+    
+      res.status(201).send(nossoToken);
   }catch(error){
       res.status(500).send(error)
   }

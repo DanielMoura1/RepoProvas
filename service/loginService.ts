@@ -62,7 +62,10 @@ export async function criarToken(usuario: usuarioData) {
       );
     console.log('?')
     console.log(nossoToken)
-    return nossoToken
+    const resposta ={
+      token:nossoToken
+    }
+    return resposta
 }
 export async function updateUsuario(usuario: usuarioData,token:string) {
   const id= await userRepository.getEmail(usuario)
