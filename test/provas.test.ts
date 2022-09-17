@@ -54,13 +54,13 @@ describe("POST e GET /provas", () => {
   });
     it("validar pegar provas por periodo",  async () => {
         const usuario = {
-            email: 'Beber@gmail.com',
+            email: 'Daniel@gmail.com',
             senha: '123',
             senha2:'123'
           };
           await supertest(server).post("/criarUser").send(usuario);
           const login = {
-            email: 'Beber@gmail.com',
+            email: 'Daniel@gmail.com',
             senha: '123'
           };
           const tokenUsuario = await supertest(server).post("/login").send(login);
@@ -95,13 +95,13 @@ describe("POST e GET /provas", () => {
   });
     it("validar pegar provas por professor",  async () => {
         const usuario = {
-            email: 'Beber@gmail.com',
+            email: 'Daniel@gmail.com',
             senha: '123',
             senha2:'123'
           };
           await supertest(server).post("/criarUser").send(usuario);
           const login = {
-            email: 'Beber@gmail.com',
+            email: 'Daniel@gmail.com',
             senha: '123'
           };
           const tokenUsuario = await supertest(server).post("/login").send(login);

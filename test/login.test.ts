@@ -11,7 +11,7 @@ afterAll(async () => {
 describe("POST /usuario", () => {
     it("validar a criaçao do usuario",  async () => {
         const body = {
-          email: 'Beber@gmail.com',
+          email: 'Daniel@gmail.com',
           senha: '123',
           senha2:'123'
         };
@@ -22,7 +22,7 @@ describe("POST /usuario", () => {
     });
     it("validar nao poder criar dois usuarios iguais",  async () => {
       const body = {
-        email: 'Beber@gmail.com',
+        email: 'Daniel@gmail.com',
         senha: '123',
         senha2:'123'
       };
@@ -34,13 +34,13 @@ describe("POST /usuario", () => {
   });
     it("validar o login do usuario",  async () => {
       const usuario = {
-        email: 'Beber@gmail.com',
+        email: 'Daniel@gmail.com',
         senha: '123',
         senha2:'123'
       };
       await supertest(server).post("/criarUser").send(usuario);
       const body = {
-        email: 'Beber@gmail.com',
+        email: 'Daniel@gmail.com',
         senha: '123',
       };
       const result = await supertest(server).post("/login").send(body);
