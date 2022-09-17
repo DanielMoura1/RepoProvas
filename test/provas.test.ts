@@ -37,6 +37,21 @@ describe("POST e GET /provas", () => {
         expect(status).toEqual(201);
         console.log(status)
     });
+    it("validar a criaçao da prova sem token",  async () => {
+  
+      const body = {
+          name:"IPD",
+          pdfUrl:"https://www.netflix.com/br/",
+          categoryId:1,
+          teacherDisciplineId:1
+      };
+      const token = ''
+      const result = await supertest(server).post("/criarProvas").send(body).set({ Authorization: token});
+      const status = result.status;
+    
+      expect(status).toEqual(500);
+      console.log(status)
+  });
     it("validar pegar provas por periodo",  async () => {
         const usuario = {
             email: 'Beber@gmail.com',
@@ -64,6 +79,20 @@ describe("POST e GET /provas", () => {
         expect(status).toEqual(201);
        
     });
+    it("validar pegar provas por periodo sem token",  async () => {
+      const token =''
+      const body = {
+          name:"IPD",
+          pdfUrl:"https://www.netflix.com/br/",
+          categoryId:1,
+          teacherDisciplineId:1
+      };
+    
+      const result = await supertest(server).get("/getProvas").set({ Authorization: token });
+      const status = result.status;
+      expect(status).toEqual(500);
+     
+  });
     it("validar pegar provas por professor",  async () => {
         const usuario = {
             email: 'Beber@gmail.com',
@@ -91,5 +120,18 @@ describe("POST e GET /provas", () => {
         expect(status).toEqual(201);
        
     });
-    
+    it("validar pegar provas por professor sem token",  async () => {
+      const body = {
+          name:"IPD",
+          pdfUrl:"https://www.netflix.com/br/",
+          categoryId:1,
+          teacherDisciplineId:1
+      };
+      const token =''
+      const result = await supertest(server).get("/getProfProvas").set({ Authorization: token });
+      const status = result.status;
+   
+      expect(status).toEqual(500);
+     
+  });
 });
