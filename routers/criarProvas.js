@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var criarProvas_1 = require("../controllers/criarProvas");
+var schemaPovas_1 = require("../schemas/schemaPovas");
+var validarSchema_1 = require("./../middlewares/validarSchema");
+var criarProvasRouter = (0, express_1.Router)();
+criarProvasRouter.post('/criarProvas', (0, validarSchema_1.validateSchemaMiddleware)(schemaPovas_1.provaSchema), criarProvas_1.createProvas);
+criarProvasRouter.get('/getProvas', criarProvas_1.getProvas);
+criarProvasRouter.get('/getProfProvas', criarProvas_1.getProfProvas);
+exports["default"] = criarProvasRouter;
